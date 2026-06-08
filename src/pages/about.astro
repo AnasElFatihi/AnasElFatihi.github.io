@@ -1,0 +1,136 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const expertise = [
+  { area: 'SaaS Architecture', desc: 'Multi-tenant systems, subscription billing, scalable backends' },
+  { area: 'Frontend Engineering', desc: 'React, Next.js, Astro — performant and accessible UIs' },
+  { area: 'Backend & APIs', desc: 'Node.js, Python, FastAPI — robust REST and GraphQL APIs' },
+  { area: 'Data & Databases', desc: 'PostgreSQL, Supabase, Redis — data modeling and optimization' },
+  { area: 'AI Integration', desc: 'OpenAI, LangChain — practical AI for real business problems' },
+  { area: 'DevOps & Cloud', desc: 'Vercel, GitHub Actions, Docker — CI/CD and deployment' },
+];
+
+const values = [
+  {
+    title: 'Comprendre avant de coder',
+    desc: "Je prends le temps de comprendre votre business, vos utilisateurs et vos contraintes avant d'écrire la première ligne de code.",
+  },
+  {
+    title: 'Livrer rapidement',
+    desc: "Je privilégie les itérations courtes et la mise en production rapide. Un produit dans les mains des utilisateurs vaut plus que la perfection sur papier.",
+  },
+  {
+    title: 'Construire pour durer',
+    desc: 'Code maintenable, architecture scalable, tests solides. Les fondations comptent pour éviter la dette technique future.',
+  },
+];
+---
+
+<Layout
+  title="À propos | Anas El Fatihi — Développeur SaaS"
+  description="Développeur SaaS & Full Stack Engineer basé au Maroc. 5+ ans d'expérience dans la création de produits numériques performants pour startups et PMEs."
+>
+  <Header />
+
+  <main class="pt-24">
+    <!-- Hero -->
+    <section class="bg-[#0F172A] py-20">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="max-w-3xl">
+          <p class="text-blue-400 text-sm font-semibold uppercase tracking-wider mb-4">À propos</p>
+          <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">
+            Je construis des produits numériques qui fonctionnent.
+          </h1>
+          <p class="text-slate-400 text-lg leading-relaxed">
+            Développeur Full Stack avec plus de 5 ans d'expérience dans la création de SaaS, MVPs et applications métier.
+            Je travaille avec des fondateurs et des entreprises pour transformer des idées en produits rentables.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Background + Expertise -->
+    <section class="py-20">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          <div>
+            <h2 class="text-2xl font-bold text-slate-900 mb-6">Parcours</h2>
+            <div class="space-y-4 text-slate-600 leading-relaxed">
+              <p>
+                Passionné par la technologie et l'entrepreneuriat, j'ai commencé à développer des applications web
+                dans le but de résoudre de vrais problèmes métier. Ce qui me motive : construire des produits
+                qui ont un impact mesurable sur le business de mes clients.
+              </p>
+              <p>
+                Après plusieurs années à travailler sur des projets variés — des startups early-stage aux PMEs
+                établies — j'ai développé une approche qui combine expertise technique et vision produit.
+              </p>
+              <p>
+                Je suis basé au Maroc et je travaille avec des clients en France, en Europe et à l'international
+                en remote. Ma priorité : livrer des produits fiables, maintenables et prêts à scaler.
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="text-2xl font-bold text-slate-900 mb-6">Expertise</h2>
+            <div class="space-y-4">
+              {expertise.map(({ area, desc }) => (
+                <div class="flex gap-4">
+                  <div class="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2.5 flex-shrink-0"></div>
+                  <div>
+                    <div class="font-semibold text-slate-900 text-sm">{area}</div>
+                    <div class="text-slate-500 text-sm">{desc}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Product mindset -->
+    <section class="bg-slate-50 border-y border-slate-200 py-20">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-12">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-4">Mon approche produit</h2>
+          <p class="text-slate-600 text-lg max-w-2xl mx-auto">
+            Je ne suis pas juste un développeur qui écrit du code. Je pense en termes de valeur utilisateur,
+            de métriques business et de scalabilité long terme.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {values.map(({ title, desc }) => (
+            <div class="bg-white border border-slate-200 rounded-xl p-6 hover:border-blue-300 hover:shadow-sm transition-all">
+              <h3 class="font-semibold text-slate-900 mb-3">{title}</h3>
+              <p class="text-slate-600 text-sm leading-relaxed">{desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20">
+      <div class="max-w-6xl mx-auto px-6 text-center">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">Travaillons ensemble</h2>
+        <p class="text-slate-600 mb-8 max-w-xl mx-auto">
+          Que vous ayez une idée à valider ou un produit à faire évoluer, je suis là pour vous aider.
+        </p>
+        <div class="flex justify-center flex-wrap gap-4">
+          <a href="/contact" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-semibold px-6 py-3 rounded-lg transition-colors">
+            Me contacter
+          </a>
+          <a href="/projects" class="inline-flex items-center gap-2 border border-slate-300 text-slate-700 font-semibold px-6 py-3 rounded-lg hover:border-slate-400 transition-colors">
+            Voir mes projets
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

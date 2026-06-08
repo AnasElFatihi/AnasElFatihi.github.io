@@ -1,0 +1,150 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const projects = [
+  {
+    title: 'FacturePro',
+    category: 'SaaS B2B',
+    description: 'Application de facturation SaaS complète pour PMEs. Gestion clients, création de devis et factures, suivi des paiements et tableaux de bord analytiques.',
+    problem: 'Les PMEs géraient leur facturation sur Excel, sans suivi des paiements ni relances automatiques.',
+    solution: "Développement d'une application SaaS multi-tenant avec abonnement mensuel, facturation Stripe et exports PDF automatisés.",
+    tech: ['Next.js', 'TypeScript', 'PostgreSQL', 'Stripe', 'Prisma', 'Tailwind CSS', 'Vercel'],
+    result: '+200 PMEs utilisatrices, MRR en croissance +20%/mois',
+    duration: '3 mois',
+    type: 'SaaS',
+  },
+  {
+    title: 'FlowAI',
+    category: 'Automatisation IA',
+    description: "Plateforme d'automatisation intelligente qui connecte les outils métier (CRM, ERP, emails) et applique l'IA pour traiter et router automatiquement les données.",
+    problem: "Une équipe de 15 personnes passait 40% de son temps à copier des données entre outils et traiter manuellement des emails.",
+    solution: "Création d'agents IA autonomes avec LangChain pour analyser, classifier et traiter les flux entrants, avec interface de monitoring temps réel.",
+    tech: ['Python', 'FastAPI', 'OpenAI', 'LangChain', 'React', 'PostgreSQL', 'Celery'],
+    result: '80% de réduction du traitement manuel, économie de 2 ETP',
+    duration: '2 mois',
+    type: 'IA',
+  },
+  {
+    title: 'StockSync',
+    category: 'Dashboard SaaS',
+    description: 'Système de gestion d\'inventaire en temps réel pour chaîne de retail multi-magasins. Alertes intelligentes, prévisions de rupture et synchronisation automatique.',
+    problem: 'Chaîne de 8 magasins sans visibilité centralisée sur les stocks, avec ruptures fréquentes et surstock coûteux.',
+    solution: "Dashboard temps réel avec Supabase Realtime, algorithmes de prévision et système d'alertes configurables par seuil.",
+    tech: ['Astro', 'Supabase', 'TypeScript', 'Tailwind CSS', 'Chart.js'],
+    result: '40% de réduction des ruptures, -25% coût de stockage',
+    duration: '4 semaines',
+    type: 'SaaS',
+  },
+  {
+    title: 'LegalDoc',
+    category: 'Génération de documents',
+    description: 'SaaS de génération automatique de documents juridiques pour cabinets. Templates personnalisables avec variables dynamiques et signature électronique intégrée.',
+    problem: "Avocats passant des heures à rédiger des contrats standards avec risque d'erreur et manque de cohérence.",
+    solution: 'Système de templates DOCX avec variables dynamiques, interface no-code et intégration signature électronique Yousign.',
+    tech: ['Next.js', 'TypeScript', 'Supabase', 'PDFKit', 'Yousign API'],
+    result: '2x plus rapide, zéro erreur de formulaire',
+    duration: '6 semaines',
+    type: 'SaaS',
+  },
+];
+---
+
+<Layout
+  title="Projets | Anas El Fatihi — Développeur SaaS"
+  description="Réalisations SaaS, automatisation IA, MVPs et dashboards. Des projets concrets avec des résultats mesurables."
+>
+  <Header />
+
+  <main class="pt-24">
+    <!-- Hero -->
+    <section class="bg-[#0F172A] py-20">
+      <div class="max-w-6xl mx-auto px-6 text-center">
+        <p class="text-blue-400 text-sm font-semibold uppercase tracking-wider mb-4">Projets</p>
+        <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">
+          Réalisations & Résultats
+        </h1>
+        <p class="text-slate-400 text-lg max-w-2xl mx-auto">
+          Des produits construits pour générer de la valeur. Chaque projet commence par comprendre le problème métier.
+        </p>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="py-24">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="space-y-6">
+          {projects.map(({ title, category, description, problem, solution, tech, result, duration, type }) => (
+            <div class="border border-slate-200 rounded-2xl overflow-hidden hover:border-slate-300 hover:shadow-md transition-all">
+              <div class="grid grid-cols-1 lg:grid-cols-5">
+                <div class="lg:col-span-2 bg-gradient-to-br from-slate-800 to-slate-900 p-8 flex flex-col justify-between min-h-52">
+                  <div>
+                    <span class="text-blue-400 text-xs font-semibold uppercase tracking-wider">{category}</span>
+                    <h2 class="text-white text-2xl font-bold mt-2 mb-3">{title}</h2>
+                    <p class="text-slate-400 text-sm leading-relaxed">{description}</p>
+                  </div>
+                  <div class="flex flex-wrap gap-2 mt-6">
+                    {tech.slice(0, 4).map(t => (
+                      <span class="bg-slate-700/80 text-slate-300 text-xs px-2.5 py-1 rounded-full">{t}</span>
+                    ))}
+                    {tech.length > 4 && (
+                      <span class="bg-slate-700/80 text-slate-400 text-xs px-2.5 py-1 rounded-full">+{tech.length - 4}</span>
+                    )}
+                  </div>
+                </div>
+
+                <div class="lg:col-span-3 p-8">
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                      <h3 class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Problème</h3>
+                      <p class="text-slate-700 text-sm leading-relaxed">{problem}</p>
+                    </div>
+                    <div>
+                      <h3 class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Solution</h3>
+                      <p class="text-slate-700 text-sm leading-relaxed">{solution}</p>
+                    </div>
+                  </div>
+
+                  <div class="flex flex-wrap items-center gap-6 pt-5 border-t border-slate-100">
+                    <div class="flex items-center gap-2">
+                      <span class="w-2 h-2 bg-green-500 rounded-full flex-shrink-0"></span>
+                      <span class="text-sm font-semibold text-slate-900">{result}</span>
+                    </div>
+                    <div class="text-sm text-slate-500">
+                      <span class="font-medium text-slate-700">Durée :</span> {duration}
+                    </div>
+                    <div class="text-sm text-slate-500">
+                      <span class="font-medium text-slate-700">Type :</span> {type}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-gradient-to-br from-blue-600 to-blue-700 py-20">
+      <div class="max-w-6xl mx-auto px-6 text-center">
+        <h2 class="text-3xl font-bold text-white mb-4">Votre projet pourrait être ici</h2>
+        <p class="text-blue-100 text-lg mb-8 max-w-xl mx-auto">
+          Prêt à construire quelque chose d'impactant ensemble ?
+        </p>
+        <a
+          href="/contact"
+          class="inline-flex items-center gap-2 bg-white text-blue-600 font-semibold px-8 py-4 rounded-xl hover:bg-blue-50 transition-colors"
+        >
+          Démarrer un projet
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

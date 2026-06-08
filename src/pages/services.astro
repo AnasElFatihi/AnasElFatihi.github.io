@@ -1,0 +1,152 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const services = [
+  {
+    title: 'Développement SaaS',
+    description: "Création d'applications SaaS complètes, de la conception à la mise en production. J'interviens sur toutes les couches : frontend, backend, base de données, authentification, facturation et infrastructure.",
+    features: [
+      'Architecture multi-tenant scalable',
+      'Authentification et gestion des rôles',
+      'Intégration Stripe (abonnements, facturation)',
+      'Dashboard admin et analytics',
+      'APIs RESTful documentées',
+      'CI/CD et déploiement automatisé',
+    ],
+    tech: ['Next.js', 'TypeScript', 'PostgreSQL', 'Stripe', 'Vercel'],
+  },
+  {
+    title: 'MVP & Validation',
+    description: "Développement rapide de produits minimum viables pour tester vos hypothèses marché. L'objectif : un produit fonctionnel entre les mains de vos premiers utilisateurs en quelques semaines.",
+    features: [
+      'Définition du périmètre fonctionnel',
+      'Design et UX orientés conversion',
+      'Développement rapide et itératif',
+      'Mise en production et monitoring',
+      'Collecte de feedback utilisateurs',
+      'Itérations basées sur les données',
+    ],
+    tech: ['Next.js', 'Supabase', 'Tailwind CSS', 'Vercel'],
+  },
+  {
+    title: 'Automatisation IA',
+    description: "Intégration de l'intelligence artificielle dans vos processus métier pour automatiser les tâches répétitives, améliorer la prise de décision et créer des expériences produit plus intelligentes.",
+    features: [
+      'Intégration OpenAI / Claude / Gemini',
+      'Agents IA et workflows automatisés',
+      'Traitement de documents et extraction de données',
+      'Chatbots et assistants intelligents',
+      'Analyses et recommandations automatiques',
+      'Pipelines de traitement NLP',
+    ],
+    tech: ['Python', 'FastAPI', 'OpenAI', 'LangChain', 'React'],
+  },
+  {
+    title: 'API & Backend',
+    description: "Conception et développement d'APIs robustes, scalables et bien documentées. Intégrations tierces et architectures backend adaptées à vos besoins de croissance.",
+    features: [
+      'APIs RESTful et GraphQL',
+      'Intégrations tierces (Stripe, SendGrid, Twilio)',
+      'Sécurité et authentification JWT/OAuth',
+      'Rate limiting et optimisation des performances',
+      'Documentation OpenAPI / Swagger',
+      'Tests unitaires et d\'intégration',
+    ],
+    tech: ['Node.js', 'Python', 'PostgreSQL', 'Redis', 'Docker'],
+  },
+  {
+    title: 'Consulting Technique',
+    description: "Accompagnement stratégique pour vos choix technologiques, audit de code, review d'architecture et montée en compétences de vos équipes techniques.",
+    features: [
+      "Audit d'architecture et code review",
+      'Choix et évaluation de technologies',
+      'Roadmap technique et estimations',
+      'Accompagnement CTO / Lead Dev',
+      'Formation et montée en compétences',
+      'Due diligence technique',
+    ],
+    tech: ['Toutes technologies', 'Architecture', 'Best Practices'],
+  },
+];
+---
+
+<Layout
+  title="Services | Anas El Fatihi — Développeur SaaS"
+  description="Développement SaaS, MVP, automatisation IA, API et consulting technique. Des solutions complètes pour vos projets numériques."
+>
+  <Header />
+
+  <main class="pt-24">
+    <!-- Hero -->
+    <section class="bg-[#0F172A] py-20">
+      <div class="max-w-6xl mx-auto px-6 text-center">
+        <p class="text-blue-400 text-sm font-semibold uppercase tracking-wider mb-4">Services</p>
+        <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">
+          Ce que je construis pour vous
+        </h1>
+        <p class="text-slate-400 text-lg max-w-2xl mx-auto">
+          Des solutions techniques complètes, du MVP au produit mature, pour transformer vos idées en produits rentables.
+        </p>
+      </div>
+    </section>
+
+    <!-- Services list -->
+    <section class="py-24">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="space-y-20">
+          {services.map(({ title, description, features, tech }, i) => (
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+              <div class={i % 2 === 1 ? 'lg:order-2' : ''}>
+                <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-4">{title}</h2>
+                <p class="text-slate-600 leading-relaxed mb-6">{description}</p>
+                <div class="flex flex-wrap gap-2">
+                  {tech.map(t => (
+                    <span class="bg-blue-50 text-blue-700 text-sm font-medium px-3 py-1 rounded-full border border-blue-200">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div class={`bg-slate-50 border border-slate-200 rounded-xl p-6 ${i % 2 === 1 ? 'lg:order-1' : ''}`}>
+                <h3 class="font-semibold text-slate-900 mb-5 text-xs uppercase tracking-wider text-slate-500">Ce qui est inclus</h3>
+                <ul class="space-y-3">
+                  {features.map(feature => (
+                    <li class="flex items-start gap-3">
+                      <svg class="text-blue-600 mt-0.5 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M20 6L9 17l-5-5"/>
+                      </svg>
+                      <span class="text-slate-700 text-sm">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-slate-50 border-t border-slate-200 py-20">
+      <div class="max-w-6xl mx-auto px-6 text-center">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">Vous avez un projet en tête ?</h2>
+        <p class="text-slate-600 mb-8 max-w-xl mx-auto">
+          Décrivez votre projet et discutons de la meilleure approche technique pour l'atteindre.
+        </p>
+        <a
+          href="/contact"
+          class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-semibold px-8 py-4 rounded-xl transition-colors"
+        >
+          Discuter de votre projet
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
